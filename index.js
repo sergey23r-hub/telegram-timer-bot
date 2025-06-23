@@ -1,10 +1,13 @@
 const express = require('express');
+const cors = require('cors');  // <=== Добавляем вот эту библиотеку
 const bodyParser = require('body-parser');
 const { Telegraf } = require('telegraf');
 
 const app = express();
 
-const BOT_TOKEN = process.env.BOT_TOKEN; // Берем из переменной окружения
+app.use(cors());  // <=== Разрешаем все CORS запросы
+
+const BOT_TOKEN = process.env.BOT_TOKEN;
 const bot = new Telegraf(BOT_TOKEN);
 const port = process.env.PORT || 3000;
 
